@@ -12,12 +12,11 @@ The code in this guide is based upon the official Terraform EKS guide (link in t
 
 ## Instructions
 
-**🗒️ NOTE:** To avoid complication, of having to setup remote state, this repository uses local state (instead of remote state) for Terraform. 
-
+**🗒️ NOTE:** To avoid complication, of having to setup remote state, this repository uses local state (instead of remote state) for Terraform.
 
 ### Explore the code
 
-Have a read through the Terraform code. 
+Have a read through the Terraform code.
 
 To provision the EKS cluster it makes use of the [EKS official module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest)
 
@@ -25,9 +24,11 @@ To provision the EKS cluster it makes use of the [EKS official module](https://r
 
 Once you have authenticated Terraform with your AWS account you can apply the configuration
 
-Run the usual `init` followed by `plan` and then `apply` with Terraform 
+Run the usual `init` followed by `plan` and then `apply` with Terraform
 
 Then we wait....It can take some time for the cluster to be made so make sure your laptop remains active with an internet connection
+
+This can take up to 30 minutes so use this time to checkout the [further reading resources](#further-reading)
 
 ### Connecting to the cluster with kubectl
 
@@ -51,7 +52,6 @@ Using previous knowledge create a new directory to hold your kubernetes YAML fil
 Try to get NGiNX deployed and exposed to the public internet via a service
 
 **💡 HINT:** Have a look at type **LoadBalancer** for your service or even go further and have a read over getting services exposed via Kubernetes ingress. The further reading on exposing services might help.
-
 
 ## Tearing things down
 
