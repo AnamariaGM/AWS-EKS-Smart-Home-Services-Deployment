@@ -57,7 +57,15 @@ Try to get NGiNX deployed and exposed to the public internet via a service
 
 It's worth renewing the AWS credentials before you destroy just in case they might have expired prior to you running destroy.
 
-You should be able to run `terraform destroy` to remove all the infrastructure.
+Firstly make sure to remove any kubernetes services you might have deployed by using the command (replacing SERVICE_FILE_NAME with whatever you have called the file):
+
+```
+kubectl delete -f SERVICE_FILE_NAME.yaml
+```
+
+This is because if you have used `type: LoadBalancer` then it will have provisioned an AWS ALB under the hood which we need to remove before destroying the cluster.
+
+You should then be able to run `terraform destroy` to remove all the infrastructure.
 
 If you find the terraform destroy works for a period of time then fails, you can run destroy again and it should tidy remaining aspects up.
 
