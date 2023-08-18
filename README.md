@@ -43,6 +43,8 @@ aws eks --region $(terraform output -raw region) update-kubeconfig \
 
 You might want to verify that `kubectl` can connect - try something like `kubectl get services` or `kubectl get nodes`
 
+📷 - Remember to take a screenshot for your solutions file
+
 ### Deploying a container
 
 Now let's try deploying a container and seeing if you can access it.
@@ -52,6 +54,8 @@ Using previous knowledge create a new directory to hold your kubernetes YAML fil
 Try to get NGiNX deployed and exposed to the public internet via a service
 
 **💡 HINTS:** Have a look at type **LoadBalancer** for your service or even go further and have a read over getting services exposed via Kubernetes ingress. The further reading section on exposing services might help. If you do go down the LoadBalancer route, it can take a bit of time until your service is available publicly (just whilst the ELB load balancer is provisioned) so wait around 5 mins before trying to hit the **EXTERNAL_IP**
+
+📷 - Remember to take a screenshot for your solutions file
 
 ## Tearing things down
 
