@@ -57,6 +57,12 @@ Try to get NGiNX deployed and exposed to the public internet via a service
 
 📷 - Remember to take a screenshot for your solutions file
 
+### Extension exercise
+
+In the exercise you deployed your first NGINX cluster to EKS.
+
+In the extension its time to try and deploy the bookstore frontend and bookstore backend API that you were working on yesterday to your cluster on EKS.
+
 ## Tearing things down
 
 It's worth renewing the AWS credentials before you destroy just in case they might have expired prior to you running destroy.
@@ -72,14 +78,6 @@ This is because if you have used `type: LoadBalancer` then it will have provisio
 You should then be able to run `terraform destroy` to remove all the infrastructure.
 
 If you find the terraform destroy works for a period of time then fails, you can run destroy again and it should tidy remaining aspects up.
-
-### Extension exercise
-
-In the exercise you deployed your first NGINX cluster to EKS.
-
-In the extension its time to try and deploy the bookstore frontend and bookstore backend API that you were working on yesterday to a new cluster on EKS.
-
-In order to do this you will have to setup the new EKS cluster using Terraform then deploy these through Kubernetes.
 
 ### Submission process
 
