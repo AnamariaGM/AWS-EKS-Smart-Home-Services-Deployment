@@ -57,6 +57,12 @@ Try to get NGiNX deployed and exposed to the public internet via a service
 
 📷 - Remember to take a screenshot for your solutions file
 
+### Extension exercise
+
+In the exercise you deployed your first NGINX cluster to EKS.
+
+In the extension its time to try and deploy the bookstore frontend and bookstore backend API that you were working on yesterday to your cluster on EKS.
+
 ## Tearing things down
 
 It's worth renewing the AWS credentials before you destroy just in case they might have expired prior to you running destroy.
