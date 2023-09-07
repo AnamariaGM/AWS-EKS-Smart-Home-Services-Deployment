@@ -73,6 +73,14 @@ You should then be able to run `terraform destroy` to remove all the infrastruct
 
 If you find the terraform destroy works for a period of time then fails, you can run destroy again and it should tidy remaining aspects up.
 
+### Extension exercise
+
+In the exercise you deployed your first NGINX cluster to EKS.
+
+In the extension its time to try and deploy the bookstore frontend and bookstore backend API that you were working on yesterday to a new cluster on EKS.
+
+In order to do this you will have to setup the new EKS cluster using Terraform then deploy these through Kubernetes.
+
 ### Submission process
 
 1. Fork this repository
