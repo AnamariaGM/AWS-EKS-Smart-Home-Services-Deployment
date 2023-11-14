@@ -12,25 +12,23 @@ The code in this guide is based upon the official Terraform EKS guide (link in t
 
 ## Instructions
 
-**🗒️ NOTE:** To avoid complication, of having to setup remote state, this repository uses local state (instead of remote state) for Terraform.
-
 ### Explore the code
 
 Have a read through the Terraform code.
 
 To provision the EKS cluster it makes use of the [EKS official module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest)
 
-### Apply terraform configuration
+### 1. Apply terraform configuration
 
 Once you have authenticated Terraform with your AWS account you can apply the configuration
 
 Run the usual `init` followed by `plan` and then `apply` with Terraform
 
-Then we wait....It can take some time for the cluster to be made so make sure your laptop remains active with an internet connection
+Then we wait....It can take some time for the cluster to be made so make sure your laptop remains active with an internet connection. If you have spotty internet then reach out to your mentor for a solution.
 
 This can take up to 30 minutes so use this time to checkout the [further reading resources](#further-reading)
 
-### Connecting to the cluster with kubectl
+### 2. Connecting to the cluster with kubectl
 
 Once your cluster has been provisioned it is time to configure the `kubectl` tool.
 
@@ -41,27 +39,30 @@ aws eks --region $(terraform output -raw region) update-kubeconfig \
     --name $(terraform output -raw cluster_name)
 ```
 
-You might want to verify that `kubectl` can connect - try something like `kubectl get services` or `kubectl get nodes`
+To verify if you've connected correctly run `kubectl get nodes`. You should see something similar to this;
 
-📷 - Remember to take a screenshot for your solutions file
+```bash
+NAME                                          STATUS   ROLES    AGE    VERSION
+ip-192-168-1-2.eu-west-2.compute.internal       Ready    <none>   3d1h   v1.21.4-eks-xxxxxxxx
+```
 
-### Deploying a container
+### 3. Deploying a container
 
-Now let's try deploying a container and seeing if you can access it.
+Now let's try deploying a container to our EKS cluster and see if you can access it.
 
 Using previous knowledge create a new directory to hold your kubernetes YAML files and create a deployment and service within that directory.
 
-Try to get NGiNX deployed and exposed to the public internet via a service
+Deploy an NGiNX container exposed to the public internet via a LoadBalancer service. This can take a couple of minutes to be reachable as it is provisioning a Load Balancer on AWS for you.
 
-**💡 HINTS:** Have a look at type **LoadBalancer** for your service or even go further and have a read over getting services exposed via Kubernetes ingress. The further reading section on exposing services might help. If you do go down the LoadBalancer route, it can take a bit of time until your service is available publicly (just whilst the ELB load balancer is provisioned) so wait around 5 mins before trying to hit the **EXTERNAL_IP**
+📷 - Take a screenshot of your browser, showing the Nginx page and the URL you requested to reach it, and place it inside the repo
 
-📷 - Remember to take a screenshot for your solutions file
+### 4. Once more with feeling
 
-### Extension exercise
+Deploy the smart home microservices that you were working on yesterday to your cluster on EKS.
 
-In the exercise you deployed your first NGINX cluster to EKS.
+### 5. Do it again
 
-In the extension its time to try and deploy the bookstore frontend and bookstore backend API that you were working on yesterday to your cluster on EKS.
+Deploy the bookstore frontend and backend to your cluster and get them connected.
 
 ## Tearing things down
 
@@ -78,18 +79,6 @@ This is because if you have used `type: LoadBalancer` then it will have provisio
 You should then be able to run `terraform destroy` to remove all the infrastructure.
 
 If you find the terraform destroy works for a period of time then fails, you can run destroy again and it should tidy remaining aspects up.
-
-### Submission process
-
-1. Fork this repository
-
-2. Work through the instructions
-
-3. Complete the SOLUTION.md file
-
-4. Destroy your cluster as indicated by the "Tearing things down" section
-
-5. Share link to your GitHub repository
 
 ## Further reading
 
