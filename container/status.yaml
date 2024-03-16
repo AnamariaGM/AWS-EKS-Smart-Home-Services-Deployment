@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: status-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: status-deployment
+  template:
+    metadata:
+      labels:
+        app: status-deployment
+    spec:
+      containers:
+      - name: status-k8s
+        image: paddymcbreen/status-img:1.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: LIGHTS_SERVICE  
+          value: http://lights-service.default.svc.cluster.local:3000
+        - name: HEATING_SERVICE
+          value: http://heating-service.default.svc.cluster.local:3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: status-service
+spec:
+  selector:
+    app: status-deployment
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3000
